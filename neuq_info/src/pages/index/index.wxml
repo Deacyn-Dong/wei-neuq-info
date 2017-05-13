@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view>
+    <view class="flex-container" wx:for="{{content}}" wx:key="{{item.postId}}" data-id="{{item.postId}}">
+    <!-- <view></view> -->
+    <view class="flex-t">
+    <image src="{{item.avatarUrl}}"></image>
+    <view>
+        <text class="name">{{item.nickName}}</text>
+        <text class="time">{{item.createTime}}</text>
+    </view>
+    </view>
+    <view class="flex-m">
+        <text>{{item.content}}</text>
+    </view>
+    <view class="flex-b">
+        <view class="like_component" bindtap="changeLike" data-id="{{item.postId}}" >
+            <!--<view class="{{item.isLike?'like_icon heartAnimation':'like_icon'}}" rel="like" bindtap="changeLike" style="{{item.isLike?'':'background-position:left'}}" data-id="{{item.postId}}"></view>-->
+            <image src="{{item.isLike ? '../../images/like-click.png' : '../../images/like.png'}}"class="like_icon"></image>
+            <text class="like_num" style="color:{{item.isLike ? '#1296db' : '#999'}}">{{item.likeCount}}</text>
+        </view>
+        <view class="comment_component">
+            <image class="comment_icon" src="../../images/comment.png"></image>
+            <text class="comment_num">{{item.commentCount}}</text>
+        </view>
+        <view class="more">
+            <navigator hover-class="nav_hover" url="../content/content?postId={{item.postId}}">更多</navigator>
+        </view>
+    </view>
+  </view>
+</view>
+<view class="weui-loadmore" wx:if="{{loading}}" style="padding-bottom:1.5em">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{!more}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+</view>

@@ -1,0 +1,19 @@
+<!--edit.wxml-->
+<view class="operation">
+    <text class="cancel" bindtap="cancel">取消</text>
+    <text class="post" bindtap="post">发送</text>
+</view>
+
+<view class="weui-cells weui-cells_after-title input_item">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea value="{{draft}}" name="content" class="weui-textarea" maxlength="200" auto-focus placeholder="写下你的故事..." bindinput="input" bindblur="setDataDraft" bindconfirm="setDataDraft"/>
+            <view class="weui-textarea-counter">{{length}}/200</view>
+        </view> 
+    </view>
+</view>
+
+<view class="switch_r">
+    <text>是否匿名</text>
+    <switch bindchange="check"/>
+</view>

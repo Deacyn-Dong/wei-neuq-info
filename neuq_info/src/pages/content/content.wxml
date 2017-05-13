@@ -1,0 +1,71 @@
+
+<view class="info">
+    <view class="flex-container" id="{{content.postId}}">
+        <view class="flex-t">
+        <image src="{{content.avatarUrl}}"></image>
+        <view>
+            <text class="name">{{content.nickName}}</text>
+            <text class="time">{{content.createTime}}</text>
+        </view>
+        </view>
+        <view class="flex-m">
+            <text>{{content.content}}</text>
+        </view>
+        <view class="flex-b">
+        <view class="like_component" bindtap="changeThump">
+            <!--<view class="{{content.isLike?'like_icon heartAnimation':'like_icon'}}" rel="like" bindtap="changeThump" style="{{content.isLike?'':'background-position:left'}}" data-id="{{content.postId}}"></view>-->
+            <image src="{{content.isLike ? '../../images/like-click.png' : '../../images/like.png'}}" class="like_icon"></image>
+            <text class="like_num" style="color:{{content.isLike ? '#1296db' : '#999'}}">{{content.likeCount}}</text>
+        </view>
+        <view class="comment_component">
+            <image class="comment_icon" src="../../images/comment.png"></image>
+            <text class="comment_num">{{content.commentCount}}</text>
+        </view>
+        <view class="more" bindtap="actionSheetTap" data-isSelf="{{content.isSelf}}">
+            <text>...</text>
+        </view>
+        </view>
+    </view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{moreComment}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">评论区</view>
+</view>
+<view class="comment" wx:for="{{comment}}" wx:key="{{item.commentId}}">
+    <image src="{{item.fromUser.avatarUrl}}" class="comment_avatar"></image>
+    <view class="flex-container first-floor-content" >
+        <view class="flex-t">
+            <text>{{item.fromUser.nickName}}</text>
+        </view>
+        <view class="flex-m" bindlongtap="{{item.isSelf ? 'deleteTap' : null}}" data-commentId="{{item.commentId}}">
+            <text>{{item.content}}</text>
+        </view>
+        <view class="flex-b">
+            <text>第1楼 </text>
+            <text>{{item.createTime}}</text>
+            <navigator class="comment_component comment_component_c" url="../comment/comment?postId={{content.postId}}&toUserId={{item.fromUser.userId}}&pCommentId={{item.commentId}}&level=2&toUserName={{item.fromUser.nickName}}" hover-class="none">
+                <image class="comment_icon" src="../../images/comment.png"></image>
+                <text class="comment_num">{{item.cCommentsSize}}</text>
+            </navigator>
+        </view>
+        <view class="double-floor" wx:if="{{item.cComments.length}}" wx:for="{{item.cComments}}"  wx:for-item="citem" wx:key="{{citem.commentId}}">
+            <navigator class="double-floor-item" url="../comment/comment?postId={{content.postId}}&toUserId={{citem.fromUser.userId}}&pCommentId={{item.commentId}}&level=2&toUserName={{citem.fromUser.nickName}}">
+                <text style="color: #1296db;">{{citem.fromUser.nickName}}</text>
+                <text>回复 </text>
+                <text style="color: #1296db;">{{citem.toUser.nickName}}</text>
+                <text>：{{citem.content}}</text>
+            </navigator>
+            <view wx:if="{{citem.isSelf}}" class="delete" bindtap="deleteTap" data-commentId="{{citem.commentId}}">删除
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{moreComment}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{!moreComment}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂时没有评论，你要来一条吗？</view>
+</view>
+<navigator class="post_comment" url="../comment/comment?postId={{content.postId}}&level=1&toUserId=0&pCommentId=0&toUserName={{content.nickName}}">
+    <image src="{{userInfo.avatarUrl}}" class="user_avatar"></image>
+    <text>写下你的评论...</text>
+</navigator>

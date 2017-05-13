@@ -1,0 +1,13 @@
+<view class="operation">
+    <text class="toUserName">@{{toUserName}}</text>
+    <text class="post" bindtap="post">发送</text>
+</view>
+
+<view class="weui-cells weui-cells_after-title input_item">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea value="{{content}}" name="content" class="weui-textarea" maxlength="50" auto-focus placeholder="分享你的观点..." bindinput="input" bindblur="blur" bindconfirm="blur"/>
+            <view class="weui-textarea-counter">{{length}}/50</view>
+        </view> 
+    </view>
+</view>

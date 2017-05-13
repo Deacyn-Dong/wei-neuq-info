@@ -1,0 +1,36 @@
+/*edit.wxss*/
+page{
+    width: 100%;
+    background-color: #F4F6F7;
+}
+.input_item{
+    width: 100%;
+    background-color: #F4F6F7;
+    clear: both;
+}
+.input_item:before{
+    border-top: none;
+}
+.operation{
+    width: 96%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #fff;
+    padding: 10rpx 2%;
+    margin: 0 auto;
+    position: relative;
+    font-size: 30rpx;
+}
+.post{
+    color: #2ecc71;
+    float: right;
+}
+.cancel{
+    float: left;
+}
+.switch_r{
+    font-size: 30rpx;
+    color: #B2B2B2;
+    margin-top: 20rpx;
+    float: right;
+}
