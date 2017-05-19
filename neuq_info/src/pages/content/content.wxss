@@ -9,7 +9,7 @@ page{
 .comment {
   margin-bottom:20rpx;
   background-color:#fff;
-  padding:0 0 0 20rpx;
+  padding:0 0 0 10rpx;
 }
 .weui-loadmore_line{
   margin:1.6em auto -0.6em;
@@ -18,26 +18,33 @@ page{
   background: rgba(0,0,0,0);
 }
 .comment_avatar{
-  width:100rpx;
-  height:100rpx;
+  width:80rpx;
+  height:80rpx;
   border-radius: 50%;
   float: left;
-  margin-top:20rpx;
+  margin-top:10rpx;
 }
 .first-floor-content{
   padding: 0;
-  overflow: auto;
 }
-.flex-m{
+.flex-container .flex-t,.flex-container .flex-m{
+  padding: 20rpx 40rpx;
+}
+
+.flex-container .flex-b{
+  padding: 0 40rpx;
+}
+.comment .flex-t,.comment .flex-b,.comment .flex-m{
+  padding: 0 20rpx;
+}
+.comment .flex-m,.comment .flex-b{
   line-height:100rpx;
 }
-.flex-b{
-  line-height: 100rpx;
-}
 .double-floor{
+  width: 92%;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  padding: 10rpx 0 10rpx 40rpx;
+  padding: 10rpx 20rpx;
   background-color : #F4F6F7;
   overflow: auto;
 }
@@ -69,16 +76,11 @@ page{
 }
 .comment_component_c{
   float: right;
-  margin-right:-70rpx;
-}
-.double-floor{
-  width : 600rpx;
+  /*margin-right:-70rpx;*/
 }
 .double-floor-item{
-  width: 75%;
+  display: inline;
   line-height:64rpx;
-  float: left;
-  padding-right: 20rpx;
   word-wrap: break-word;
   overflow: hidden;
   white-space: normal;
@@ -86,6 +88,6 @@ page{
 .delete{
   height: 80rpx;
   line-height: 80rpx;
-  float: right;
-  margin-right: 40rpx;
+  margin-left: 10rpx;
+  color:#e64340;
 }

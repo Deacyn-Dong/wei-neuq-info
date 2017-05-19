@@ -54,8 +54,8 @@
                 <text style="color: #1296db;">{{citem.toUser.nickName}}</text>
                 <text>：{{citem.content}}</text>
             </navigator>
-            <view wx:if="{{citem.isSelf}}" class="delete" bindtap="deleteTap" data-commentId="{{citem.commentId}}">删除
-            </view>
+            <text wx:if="{{citem.isSelf}}" class="delete" bindtap="deleteTap" data-commentId="{{citem.commentId}}">删除
+            </text>
         </view>
     </view>
 </view>

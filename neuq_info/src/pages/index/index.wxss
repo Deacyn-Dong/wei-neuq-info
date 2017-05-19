@@ -6,5 +6,10 @@ page{
 .nav_hover{
     color: #2ecc71;
 }
-
+.flex-container .flex-t,.flex-container .flex-m{
+  padding: 20rpx 40rpx;
+}
+.flex-container .flex-b{
+  padding: 0 40rpx;
+}
 

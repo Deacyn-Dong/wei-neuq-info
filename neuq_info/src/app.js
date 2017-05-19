@@ -60,8 +60,11 @@ App({
       console.log("success3-post-code")
       console.log("I get sessionId is "+res.data.content.sessionId)
       that.globalData.sessionId=res.data.content.sessionId
-      wx.setStorageSync('3rd_session',that.globalData.sessionId)
-      console.log("success4-set-storage")
+      // wx.setStorageSync('3rd_session',that.globalData.sessionId)
+      // console.log("success4-set-storage "+that.globalData.sessionId)
+      return pwx.setStorage('3rd_session',that.globalData.sessionId)
+    }).then( res => {
+      console.log("success4-set-storage "+res)
       return pwx.getUserInfo()
     }).then( res => {
       console.log("success5-get-user-info")
@@ -79,6 +82,8 @@ App({
           'Content-Type' : 'application/x-www-form-urlencoded'},
         method : "POST"
       })
+    }).then( res => {
+      console.log(res)
     }).finally( res => {
       // console.log(res)
       typeof fn == 'function' && fn(that.globalData.sessionId);

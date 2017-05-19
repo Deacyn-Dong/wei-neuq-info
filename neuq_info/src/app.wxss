@@ -31,12 +31,9 @@ page{
 .flex-container .flex-t,.flex-container .flex-b,.flex-container .flex-m{
   flex-grow: 1;
   background: #fff;
-  padding: 20rpx 40rpx;
+  
 }
 
-.flex-container .flex-b{
-  padding: 0 40rpx;
-}
 .flex-t{
   height: 100rpx;
   line-height: 100rpx;

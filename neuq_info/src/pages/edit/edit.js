@@ -1,6 +1,5 @@
 //edit.js
 const onfire = require('../../modules/onfire.js')
-const tool = require('../../utils/tool.js')
 const api = require('../../utils/api.js')
 const app = getApp()
 Page({
@@ -41,6 +40,10 @@ Page({
     if(e.detail.value){
       this.setData({
         secret : 1
+      })
+    }else{
+      this.setData({
+        secret : 0
       })
     }
   },
@@ -118,18 +121,20 @@ Page({
                       key: 'draft',
                       data: ''
                     })
-                    // wx.showToast({
-                    //   title: '提交成功',
-                    //   icon: 'success',
-                    //   duration: 1500
-                    // })
                     wx.switchTab({
                       url: '/pages/index/index',
                       success : function(){
                         onfire.fire('afterPost')
                       }
                     })
-                  }else if(res.data.errorCode == 40008){
+                    // wx.showToast({
+                    //   title: '提交成功',
+                    //   icon: 'success',
+                    //   duration: 1500,
+                    //   success : function(){
+                    //   }
+                    // })
+                  }else if(res.data.code == 40008){
                     app.getSessionId(that.post)
                   }
                 },
